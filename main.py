@@ -23,6 +23,7 @@ def game():
             if event.type == pygame.QUIT:
                 run=False
         player.move()
+        player.boundary()
         pygame.display.flip()
 
 game()

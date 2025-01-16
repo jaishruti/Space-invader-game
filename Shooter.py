@@ -18,7 +18,12 @@ class Shooter:
 
     def fire_bullet(self):
         pass
-    
+    def boundary(self):
+        if self.rect.x-20 < 0:
+            self.rect.x += self.speed
+        if self.rect.x+60 > 800:
+            self.rect.x -= self.speed
+
     def move(self):
         keys = pygame.key.get_pressed()
         if keys[K_LEFT]:
