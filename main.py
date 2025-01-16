@@ -1,4 +1,5 @@
 import pygame
+import random
 from Shooter import Shooter
 from bullet import Bullet
 bullets = pygame.sprite.Group()
@@ -18,7 +19,9 @@ def game():
     def fire_bullet():  
             bulletOb = Bullet('player',player.rect.center)
             bullets.add(bulletOb)
+            print(len(bullets))
             
+    clock = pygame.time.Clock()
     #main game loop
     while run:
         keys = pygame.key.get_pressed()
@@ -27,6 +30,7 @@ def game():
         win.blit(player.surf, player.rect)
         for bulletOb in bullets:
              win.blit(bulletOb.surf,bulletOb.rect)
+             bulletOb.move()
 
         #close win on Quit button click
         for event in pygame.event.get():
@@ -35,8 +39,11 @@ def game():
         player.move()
         player.boundary()
         if keys[pygame.K_SPACE]:
-            fire_bullet()
+            if random.randint(1,10) == 1:
+                fire_bullet()
 
         pygame.display.flip()
+        pygame.display.update()
+        clock.tick(60)
 
 game()

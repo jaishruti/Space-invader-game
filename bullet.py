@@ -7,6 +7,8 @@ class Bullet(pygame.sprite.Sprite):
         img_path = './assets/'+choice+'Bullet.png'
         print(img_path)
         self.surf = pygame.image.load(img_path)
+        self.surf = pygame.transform.scale(self.surf,(10,30))
         self.rect = self.surf.get_rect(center=(pos))
     
-    
+    def move(self):
+        self.rect.move_ip(0,-10)
