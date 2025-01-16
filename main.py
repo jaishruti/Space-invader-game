@@ -50,6 +50,7 @@ def game():
         for alien in aliens:
             win.blit(alien.surf,alien.rect)
             alien.update()
+            alien.boundary()
         
         #when bullet hits alien -> kill alien and bullet
         if bullets:

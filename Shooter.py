@@ -18,9 +18,6 @@ class Shooter(pygame.sprite.Sprite):
         self.rect = self.surf.get_rect(center=(pos))
         self.speed = 5
         
-
-    
-    
     def boundary(self):
         if self.rect.x-20 < 0:
             self.rect.x += self.speed
