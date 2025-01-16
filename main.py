@@ -50,7 +50,15 @@ def game():
         for alien in aliens:
             win.blit(alien.surf,alien.rect)
             alien.update()
-            
+        
+        #when bullet hits alien -> kill alien and bullet
+        if bullets:
+             for bullet in bullets:
+                  aliens_hit = pygame.sprite.spritecollide(bullet,aliens,True)
+                  if aliens_hit:
+                         for alien in aliens_hit:
+                              bullet.kill()
+
         #close win on Quit button click
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
