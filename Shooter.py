@@ -1,4 +1,5 @@
 import pygame
+from bullet import Bullet
 #Step 1: create shooter class 
 
 from pygame.locals import (
@@ -8,16 +9,18 @@ from pygame.locals import (
     QUIT
 )
 
-class Shooter:
+class Shooter(pygame.sprite.Sprite):
     #step 2: define constructor method to load image on surfance
     def __init__(self,pos,siz):
+        super().__init__()
         self.surf = pygame.image.load('./assets/Shooter.png')
         self.surf = pygame.transform.scale(self.surf, siz)
         self.rect = self.surf.get_rect(center=(pos))
         self.speed = 5
+        
 
-    def fire_bullet(self):
-        pass
+    
+    
     def boundary(self):
         if self.rect.x-20 < 0:
             self.rect.x += self.speed
@@ -30,3 +33,4 @@ class Shooter:
             self.rect.x -=self.speed
         if keys[K_RIGHT]:
             self.rect.x +=self.speed
+ 
